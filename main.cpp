@@ -43,5 +43,3 @@ int main() {
 	system("pause");
 	return 0;
 }
-
-// D:/Studying/Programming/LABS/Laboratory Work 2.3 v.1/Laboratory Work 2.3 v.1/
