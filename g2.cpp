@@ -9,9 +9,8 @@
 // CONSTRUCTORS
 Point::Point(const double& x, const double& y) : _x{ x }, _y{ y } {}
 DirLine::DirLine(const Point& p1, const Point& p2) : _p1{ p1 }, _p2{p2} {
-	if (p1 != p2) {
+	if (p1 != p2)
 		_isDirLine = true;
-	}
 }
 Segment::Segment(const Point& p1, const Point& p2) : _p1{ p1 }, _p2{ p2 } {
 	if (_p1 != _p2)
