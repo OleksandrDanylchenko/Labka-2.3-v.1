@@ -79,7 +79,7 @@ bool isLineCrossTriangle(const Triangle& tri, const DirLine& l) {
 
 std::string whereIsDirLine(const Triangle& tri, const DirLine& l) {
 	Point triVertex[3] = { tri.getA(), tri.getB(), tri.getC() };
-	size_t pBelToLine = 0; // amount of points, which belogns to DirLine
+	size_t pBelToLine = 0; // amount of points of the triangle, which belogn to DirLine
 	for (size_t i = 0; i < 3; ++i)
 		if (l.deviation(triVertex[i]) == 0)
 			++pBelToLine;
