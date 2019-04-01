@@ -24,9 +24,7 @@ public:
 	Point getP1() const;
 	Point getP2() const;
 	bool getIsLine() const;
-	//deviation
-	// see if the point on the left/right side or on the line
-	short deviation(const Point&) const;
+	short deviation(const Point&) const; 	// checks if the point on the left/right side or on the line
 private:
 	Point _p1{ 0., 0. };
 	Point _p2{ 0., 0. };
