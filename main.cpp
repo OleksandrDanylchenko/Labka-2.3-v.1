@@ -17,10 +17,8 @@ int main() {
 	while (true) {
 		std::string inputFilePath = getFilePath('i');
 		inputFile.open(inputFilePath, std::ios_base::in);
-		if (inputFile.fail()) {
+		if (inputFile.fail())
 			inputFilePath.clear();
-			continue;
-		}
 		else
 			break;
 	}
@@ -30,7 +28,7 @@ int main() {
 		std::string outputFilePath = getFilePath('o');
 		outputFile.open(outputFilePath, std::ios_base::out);
 		if (outputFile.fail())
-			continue;
+			outputFilePath.clear();
 		else
 			break;
 	}
