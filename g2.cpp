@@ -118,7 +118,7 @@ Point DirLine::getP1() const { return _p1; }
 Point DirLine::getP2() const { return _p2; }
 bool DirLine::getIsLine() const { return _isDirLine; }
 short DirLine::deviation(const Point& p) const {
-	// pseudoscalar composition
+	// pseudoscalar multiplication
 	double checkVal = (_p2.getX() - _p1.getX()) * (p.getY() - _p1.getY()) -  (p.getX() - _p1.getX()) * (_p2.getY() - _p1.getY());
 	constexpr double eps = 1e-1;
 	if (abs(checkVal - 0.) < eps) // on line
@@ -136,7 +136,6 @@ Point Triangle::getA() const { return _A; }
 Point Triangle::getB() const { return _B; };
 Point Triangle::getC() const { return _C; };
 bool Triangle::getIsTriangle() const { return _isTriangle; }
-
 
 double Point::distPointToPoint(const Point& otherPoint) const {
 	//formula - https://drive.google.com/open?id=1qqhEAy6ZMNQm5wH8REvXU4_cxcqebK-v
