@@ -56,6 +56,22 @@ void processData(std::ifstream& ifs, std::ofstream& ofs) {
 	}
 }
 
+std::string whereIsDirLine(const Triangle& tri, const DirLine& l) {
+	Point triVertex[3] = { tri.getA(), tri.getB(), tri.getC() };
+	size_t pBelToLine = 0; // amount of points of the triangle, which belogn to DirLine
+	for (size_t i = 0; i < 3; ++i)
+		if (l.deviation(triVertex[i]) == 0)
+			++pBelToLine;
+	if (pBelToLine == 1)
+		return "line has one common point with the triangle";
+	else if (pBelToLine == 2)
+		return "segment of the triangle belongs to line";
+	else if (isLineCrossTriangle(tri, l))
+		return "line crosses the triangle";
+	else
+		return "line has no common points with the triangle";
+}
+
 bool isTriangle(const Point& A, const Point& B, const Point& C) {
 	// formula - https://drive.google.com/open?id=18Z6FNiHCm7uyOtyxxKnPdbsm-nNU_Y_3
 	// three points not create a triangle if they are located on the same line
@@ -75,20 +91,4 @@ bool isLineCrossTriangle(const Triangle& tri, const DirLine& l) {
 		return true;
 	else
 		return false;
-}
-
-std::string whereIsDirLine(const Triangle& tri, const DirLine& l) {
-	Point triVertex[3] = { tri.getA(), tri.getB(), tri.getC() };
-	size_t pBelToLine = 0; // amount of points of the triangle, which belogn to DirLine
-	for (size_t i = 0; i < 3; ++i)
-		if (l.deviation(triVertex[i]) == 0)
-			++pBelToLine;
-	if (pBelToLine == 1)
-		return "line has one common point with the triangle";
-	else if (pBelToLine == 2)
-		return "segment of the triangle belongs to line";
-	else if (isLineCrossTriangle(tri, l))
-		return "line crosses the triangle";
-	else
-		return "line has no common points with the triangle";
 }
