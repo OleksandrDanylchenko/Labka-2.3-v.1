@@ -58,7 +58,7 @@ std::ostream& operator<<(std::ofstream& ofs, const DirLine& l) {
 	Point tP1 = l.getP1();
 	Point tP2 = l.getP2();
 	ofs << tP1;
-	ofs << " ; ";
+	ofs << "; ";
 	ofs << tP2;
 	return ofs;
 }
@@ -66,7 +66,7 @@ std::ostream& operator<<(std::ofstream& ofs, const Segment& seg) {
 	Point segP1 = seg.getP1();
 	Point segP2 = seg.getP2();
 	ofs << segP1;
-	ofs << " ; ";
+	ofs << "; ";
 	ofs << segP2;
 	return ofs;
 }
@@ -76,11 +76,11 @@ std::ostream& operator<<(std::ofstream& ofs, const Triangle& tri) {
 	Point c = tri.getC();
 	ofs << "Triangle: ";
 	ofs << a;
-	ofs << " ; ";
+	ofs << "; ";
 	ofs << b;
-	ofs << " ; ";
+	ofs << "; ";
 	ofs << c;
-	ofs << " ; ";
+	ofs << ';';
 	ofs << std::endl;
 	return ofs;
 }
