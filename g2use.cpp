@@ -20,6 +20,9 @@ std::string getFilePath(const char& ioVar) {
 		//if the input is clear -> read information from in.txt from the root folder
 		if (filePath.empty())
 			filePath = "D:/Studying/Programming/LABS/Laboratory Work 2.3 v.1/Laboratory Work 2.3 v.1/in.txt";
+		//if user didn't provided full adress -> find a file in the root folder
+		else if (filePath[0] != 'C' && filePath[0] != 'D' && filePath[0] != 'E' && filePath[0] != 'Z')
+			filePath += ".txt";
 	}
 	else {
 		std::cout << "\nEnter the path to the output file: ";
@@ -57,19 +60,21 @@ void processData(std::ifstream& ifs, std::ofstream& ofs) {
 }
 
 std::string whereIsDirLine(const Triangle& tri, const DirLine& l) {
-	Point triVertex[3] = { tri.getA(), tri.getB(), tri.getC() };
-	size_t pBelToLine = 0; // amount of points of the triangle, which belogn to DirLine
-	for (size_t i = 0; i < 3; ++i)
-		if (l.deviation(triVertex[i]) == 0)
-			++pBelToLine;
-	if (pBelToLine == 1)
-		return "line has one common point with the triangle";
-	else if (pBelToLine == 2)
-		return "segment of the triangle belongs to line";
-	else if (isLineCrossTriangle(tri, l))
+	if (isLineCrossTriangle(tri, l))
 		return "line crosses the triangle";
-	else
-		return "line has no common points with the triangle";
+	else {
+		Point triVertex[3] = { tri.getA(), tri.getB(), tri.getC() };
+		size_t pBelToLine = 0; // amount of points of the triangle, which belogn to DirLine
+		for (size_t i = 0; i < 3; ++i)
+			if (l.deviation(triVertex[i]) == 0)
+				++pBelToLine;
+		if (pBelToLine == 1)
+			return "line has one common point with the triangle";
+		else if (pBelToLine == 2)
+			return "segment of the triangle belongs to line";
+		else
+			return "line has no common points with the triangle";
+	}
 }
 
 bool isTriangle(const Point& A, const Point& B, const Point& C) {
