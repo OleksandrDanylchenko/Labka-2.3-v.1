@@ -4,6 +4,6 @@
 void putAboutStudent();
 std::string getFilePath(const char&);
 void processData(std::ifstream&, std::ofstream&);
-std::string whereIsDirLine(const Triangle&, const DirLine&);
 bool isTriangle(const Point&, const Point&, const Point&);
 bool isLineCrossTriangle(const Triangle&, const DirLine&);
+std::string whereIsDirLine(const Triangle&, const DirLine&);
