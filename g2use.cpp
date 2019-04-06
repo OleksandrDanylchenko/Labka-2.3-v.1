@@ -64,7 +64,7 @@ std::string whereIsDirLine(const Triangle& tri, const DirLine& l) {
 		return "line crosses the triangle";
 	else {
 		Point triVertex[3] = { tri.getA(), tri.getB(), tri.getC() };
-		size_t pBelToLine = 0; // amount of points of the triangle, which belogn to DirLine
+		unsigned short pBelToLine = 0; // amount of points of the triangle, which belogn to DirLine
 		for (size_t i = 0; i < 3; ++i)
 			if (l.deviation(triVertex[i]) == 0)
 				++pBelToLine;
@@ -90,10 +90,7 @@ bool isTriangle(const Point& A, const Point& B, const Point& C) {
 
 bool isLineCrossTriangle(const Triangle& tri, const DirLine& l) {
 	// formula - https://drive.google.com/open?id=1j4B5eD03fFUwgrvZqZ4C5_C0AQzl3SsO
-	if ((l.deviation(tri.getA()) > 0 && l.deviation(tri.getB()) < 0) || (l.deviation(tri.getA()) < 0 && l.deviation(tri.getB()) > 0) ||
+	return ((l.deviation(tri.getA()) > 0 && l.deviation(tri.getB()) < 0) || (l.deviation(tri.getA()) < 0 && l.deviation(tri.getB()) > 0) ||
 		(l.deviation(tri.getB()) > 0 && l.deviation(tri.getC()) < 0) || (l.deviation(tri.getB()) < 0 && l.deviation(tri.getC()) > 0) ||
-		(l.deviation(tri.getA()) > 0 && l.deviation(tri.getC()) < 0) || (l.deviation(tri.getA()) < 0 && l.deviation(tri.getC()) > 0))
-		return true;
-	else
-		return false;
+		(l.deviation(tri.getA()) > 0 && l.deviation(tri.getC()) < 0) || (l.deviation(tri.getA()) < 0 && l.deviation(tri.getC()) > 0));
 }
