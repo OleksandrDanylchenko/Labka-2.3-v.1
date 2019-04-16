@@ -21,7 +21,7 @@ std::string getFilePath(const char& ioVar) {
 		if (filePath.empty())
 			filePath = "D:/Studying/Programming/LABS/Laboratory Work 2.3 v.1/Laboratory Work 2.3 v.1/in.txt";
 		//if user didn't provided full adress -> find a file in the root folder
-		else if (filePath[0] != 'C' && filePath[0] != 'D' && filePath[0] != 'E' && filePath[0] != 'Z')
+		else if (filePath.find('\\') == std::string::npos and filePath.find('/') == std::string::npos)
 			filePath += ".txt";
 	}
 	else {
@@ -32,7 +32,7 @@ std::string getFilePath(const char& ioVar) {
 		if (filePath.empty())
 			filePath = "D:/Studying/Programming/LABS/Laboratory Work 2.3 v.1/Laboratory Work 2.3 v.1/out.txt";
 		//if user didn't provided full adress -> create a new file in the root folder
-		else if (filePath[0] != 'C' && filePath[0] != 'D' && filePath[0] != 'E' && filePath[0] != 'Z')
+		else if (filePath.find('\\') == std::string::npos and filePath.find('/') == std::string::npos)
 			filePath += ".txt";
 	}
 	return filePath;
